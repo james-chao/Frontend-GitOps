@@ -3,14 +3,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: backend
+  name: frontend
   namespace: argocd
 
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/james-chao/Backend-GitOps.git
+    repoURL: https://github.com/james-chao/Frontend-GitOps.git
     targetRevision: main
     path: production
 

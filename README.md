@@ -1,2 +1,2 @@
-# Backend-GitOps
-Budget System Backend GitOps
+# Frontend-GitOps
+Budget System Frontend GitOps
