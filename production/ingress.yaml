@@ -2,14 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 
 metadata:
-  name: backend
+  name: frontend
   namespace: production
 
 spec:
   ingressClassName: traefik
 
   rules:
-  - host: api.company.local
+  - host: budgetsystem.company.local
 
     http:
       paths:
@@ -18,6 +18,6 @@ spec:
 
         backend:
           service:
-            name: backend
+            name: frontend
             port:
               number: 80

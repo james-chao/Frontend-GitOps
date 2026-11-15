@@ -1,52 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: frontend
   namespace: production
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: frontend
   template:
     metadata:
       labels:
-        app: backend
+        app: frontend
     spec:
       imagePullSecrets:
       - name: harbor-secret
       containers:
-      - name: backend
-        image: harbor.company.local:8443/backend/backend:46d62a4
+      - name: frontend
+        image: harbor.company.local:8443/frontend/frontend:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8234
-        env:
-        - name: ConnectionStrings__Postgres
-          valueFrom:
-            secretKeyRef:
-              name: backend-secret
-              key: DB_CONNECTION_STRING
-        - name: JWT_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: backend-secret
-              key: JWT_SECRET_KEY
-        - name: JWT_ISSUER
-          valueFrom:
-            configMapKeyRef:
-              name: backend-config
-              key: JWT_ISSUER
-        - name: JWT_AUDIENCE
-          valueFrom:
-            configMapKeyRef:
-              name: backend-config
-              key: JWT_AUDIENCE
-        - name: ASPNETCORE_ENVIRONMENT
-          valueFrom:
-            configMapKeyRef:
-              name: backend-config
-              key: ASPNETCORE_ENVIRONMENT
+        - containerPort: 80
         resources:
           requests:
             cpu: 100m
