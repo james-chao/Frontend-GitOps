@@ -17,7 +17,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: frontend
-        image: harbor.company.local:8443/frontend/frontend:01c3299
+        image: harbor.company.local:8443/frontend/frontend:cee71f3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
